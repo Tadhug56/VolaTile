@@ -10,7 +10,7 @@ public class Game5PlayerController : MonoBehaviour
         // Movement Variables
 
             //Directional Variables
-            public float speed = 5.0f;
+            private float speed = 5.0f;
             private float smoothMovementInputTime = 0.1f;
             private Vector2 moveInput;
             private Vector2 smoothMovementInput;
@@ -20,7 +20,7 @@ public class Game5PlayerController : MonoBehaviour
             private float rotationSpeed = 4000.0f;
 
         // Rigidbody Variables
-        
+
         private Rigidbody2D playerRb;
 
     

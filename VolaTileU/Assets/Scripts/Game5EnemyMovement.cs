@@ -27,7 +27,7 @@ public class Game5EnemyMovement : MonoBehaviour
     }
 
     // Moves the enemy towards the player
-    void EnemmyMovement()
+    void EnemyMovement()
     {
         distance = Vector2.Distance(transform.position, player.transform.position); // Calculates the distance between the enemy and the player
         Vector2 direction = player.transform.position - transform.position; // Calculates the direction it needs to face

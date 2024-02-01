@@ -12,7 +12,7 @@ public class Game5Bullet : MonoBehaviour
         public GameObject bulletPrefab;
 
         // Firing related variables
-        public float bulletSpeed = 6.0f;
+        private float bulletSpeed = 10.0f;
         private float shotDelay = 0.3f;
         private float lastShotFired;
         private bool fireContinously;
