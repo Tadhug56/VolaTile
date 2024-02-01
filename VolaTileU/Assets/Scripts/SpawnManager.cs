@@ -5,22 +5,22 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     
-    // Initialising Variables
+    // Spawn Manager Variables
     
-    public List<Enemy> enemies = new List<Enemy>();
-    public List<GameObject> enemiesToSpawn = new List<GameObject>();
-    public int currentWave;
-    public int waveValue;
+        // Spawner Variables
 
-    public Transform spawnLocation;
-    public int waveDuration;
-    private float waveTimer;
-    private float spawnInterval;
-    private float spawnTimer;
+        public List<Enemy> enemies = new List<Enemy>();
+        public List<GameObject> enemiesToSpawn = new List<GameObject>();
+        public Transform spawnLocation;
+        private float spawnInterval;
+        private float spawnTimer;
 
+        // Wave Variables
 
-   
-    // Initial Variable assignments
+        public int currentWave;
+        public int waveValue;
+        public int waveDuration;
+        private float waveTimer;
 
 
     // Start is called before the first frame update
@@ -29,7 +29,7 @@ public class SpawnManager : MonoBehaviour
         GenerateWave();
     }
 
-    // Update is called once per frame
+    // Updates based on the physics frames
     void FixedUpdate()
     {
         if(spawnTimer <= 0)
