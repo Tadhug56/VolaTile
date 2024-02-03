@@ -7,7 +7,7 @@ public class Game5EnemyMovement : MonoBehaviour
     // Enemey Movement Variables
 
         // Playe related variables
-        public GameObject player;
+        private GameObject player;
 
         // Enemey related variables
         private float speed = 3.0f;
@@ -20,11 +20,13 @@ public class Game5EnemyMovement : MonoBehaviour
         player = GameObject.FindWithTag("Player");  // Assigns the enemies target to the player as it has the player tag
     }
 
+
     // Update is called once per frame
     void Update()
     {
         EnemyMovement();
     }
+
 
     // Moves the enemy towards the player
     void EnemyMovement()

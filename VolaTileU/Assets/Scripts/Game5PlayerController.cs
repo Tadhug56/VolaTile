@@ -24,13 +24,12 @@ public class Game5PlayerController : MonoBehaviour
         private Rigidbody2D playerRb;
 
     
-
-
     // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody2D>();
     }
+
 
     // Updates based on the physics frames
     void FixedUpdate()
@@ -39,6 +38,7 @@ public class Game5PlayerController : MonoBehaviour
         RotationDirection();
     }
 
+
     // Directional movement for the player
     void Movement()
     {
@@ -46,6 +46,7 @@ public class Game5PlayerController : MonoBehaviour
         smoothMovementInput = Vector2.SmoothDamp(smoothMovementInput, moveInput, ref smoothMovementInputVelocity, smoothMovementInputTime);
         playerRb.velocity = smoothMovementInput * speed; // Applies the movement
     }
+
 
     //  Rotational movement for the player
     void RotationDirection()
@@ -58,6 +59,7 @@ public class Game5PlayerController : MonoBehaviour
             playerRb.MoveRotation(rotation); // Applies the rotation
         }
     }
+
 
     // Check for movement inputs
     private void OnMove(InputValue inputValue)

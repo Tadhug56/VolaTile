@@ -137,3 +137,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 3
+  enemy: {fileID: -388425240422307927, guid: 158978cb93fb24f1e8d3c23173755f60, type: 3}

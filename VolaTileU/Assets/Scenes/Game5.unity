@@ -147,7 +147,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 151332027}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.706, y: -1.028, z: 0.027122736}
+  m_LocalPosition: {x: -0, y: 0.53, z: 0.027122736}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -303,9 +303,9 @@ MonoBehaviour:
   - enemeyPrefab: {fileID: 1384741748399864279, guid: 158978cb93fb24f1e8d3c23173755f60, type: 3}
     cost: 1
   enemiesToSpawn: []
+  spawnLocation: {fileID: 1837119819}
   currentWave: 1
   waveValue: 0
-  spawnLocation: {fileID: 1837119819}
   waveDuration: 20
 --- !u!1 &1825590612
 GameObject:
@@ -435,6 +435,7 @@ GameObject:
   - component: {fileID: 1936943222}
   - component: {fileID: 1936943225}
   - component: {fileID: 1936943226}
+  - component: {fileID: 1936943227}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -462,7 +463,7 @@ Rigidbody2D:
   m_Interpolate: 1
   m_SleepingMode: 0
   m_CollisionDetection: 1
-  m_Constraints: 4
+  m_Constraints: 0
 --- !u!212 &1936943223
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -543,7 +544,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a100e5cc65c344b4bce691f314b71bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
 --- !u!114 &1936943226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -558,7 +558,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpawnPoint: {fileID: 151332028}
   bulletPrefab: {fileID: 1302493005692272324, guid: 5037fab68851c4bb282173736f7f6f57, type: 3}
-  bulletSpeed: 5
+--- !u!114 &1936943227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1936943221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 40a2dc2ea52c44bcfae0d6ea23817a68, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1001 &6339876606057881097
 PrefabInstance:
   m_ObjectHideFlags: 0

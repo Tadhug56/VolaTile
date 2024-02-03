@@ -29,6 +29,7 @@ public class SpawnManager : MonoBehaviour
         GenerateWave();
     }
 
+
     // Updates based on the physics frames
     void FixedUpdate()
     {
@@ -54,41 +55,50 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
+
     // CREATED METHODS
 
+    // Generates the wave of enemies based on wave value, spawn interval and wave timer
     public void GenerateWave()
     {
-        waveValue = currentWave * 10;
-        GenerateEnemies();
+        waveValue = currentWave * 10; // Tokens to spend on enemies
+        GenerateEnemies(); // Generates the enemies
 
+        // Overhead wave values
         spawnInterval = waveDuration / enemiesToSpawn.Count;
         waveTimer = waveDuration;
     }
 
+
+    // Creates a list of enemies to be generated based on an enemies random id and their cost
     public void GenerateEnemies()
     {
-        List<GameObject> generatedEnemies = new List<GameObject>();
+        List<GameObject> generatedEnemies = new List<GameObject>(); // Creates a new empty list of enemies to be spawned
 
+        // While the wave still has tokens to spend on enemies
         while(waveValue > 0)
         {
-            int randomEnemyId = Random.Range(0, enemies.Count);
-            int randomEnemyCost = enemies[randomEnemyId].cost;
+            int randomEnemyId = Random.Range(0, enemies.Count); // Id of the enemy to be spawned
+            int randomEnemyCost = enemies[randomEnemyId].cost; // Cost of the enemy to be spawned (TO CHANGE - Will be based on cost of a type of enemy)
 
+            // If the cost of the latest enemy is less than the remaining tokens of the wave, add a new enemy to be spawned to the list
             if(waveValue - randomEnemyCost >= 0)
             {
                 generatedEnemies.Add(enemies[randomEnemyId].enemeyPrefab);
                 waveValue -= randomEnemyCost;
             }
 
+            // If no tokens remaining then end the loop
             else if(waveValue <= 0)
             {
                 break;
             }
         }
 
-        enemiesToSpawn.Clear();
-        enemiesToSpawn = generatedEnemies;
+        enemiesToSpawn.Clear(); // Clears the list of enemies to spawn
+        enemiesToSpawn = generatedEnemies; // Sets the new list of enemies to spawn to the ones decided on this wave
     }
+
 
     // CLASS DEFINITIONS
 

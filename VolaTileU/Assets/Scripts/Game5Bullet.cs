@@ -17,6 +17,7 @@ public class Game5Bullet : MonoBehaviour
         private float lastShotFired;
         private bool fireContinously;
 
+
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -35,11 +36,13 @@ public class Game5Bullet : MonoBehaviour
         }
     }
 
+
     // Checks for input (SET TO SPACEBAR IN THE INPUT FILE)
     void OnFire(InputValue inputValue)
     {
         fireContinously = inputValue.isPressed;
     }
+
 
     // Creates the bullets
     void FireBullet()
