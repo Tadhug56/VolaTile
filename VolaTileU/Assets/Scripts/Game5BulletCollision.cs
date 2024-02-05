@@ -27,7 +27,7 @@ public class Game5BulletCollision : MonoBehaviour
         if(enemy)
         {
             Destroy(gameObject); // Destroys the bullet
-            bot.TakeDamage(damage); // Calls the TakeDamage method in the Game5Enemy script
+            enemy.TakeDamage(damage); // Calls the TakeDamage method in the Game5Enemy script
         } 
     }
 }

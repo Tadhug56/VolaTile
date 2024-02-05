@@ -4,13 +4,26 @@ using UnityEngine;
 
 public class Game5Enemy : MonoBehaviour
 {
-    public float health;
-    public float maxHealth = 5.0f;
+    // Enemy Variables
+
+        // Health related variables
+        private float health;
+        public float maxHealth = 5.0f;
+
+    // Enemey Movement Variables
+
+        // Playe related variables
+        private GameObject player;
+
+        // Enemey related variables
+        private float speed = 3.0f;
+        private float distance;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindWithTag("Player");  // Assigns the enemies target to the player as it has the player tag
         health = maxHealth;
     }
 
@@ -18,7 +31,7 @@ public class Game5Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        EnemyMovement();
     }
 
 
@@ -32,5 +45,14 @@ public class Game5Enemy : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    // Moves the enemy towards the player
+    void EnemyMovement()
+    {
+        distance = Vector2.Distance(transform.position, player.transform.position); // Calculates the distance between the enemy and the player
+        Vector2 direction = player.transform.position - transform.position; // Calculates the direction it needs to face
+
+        transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime); // Moves the enmey towards the player
     }
 }
