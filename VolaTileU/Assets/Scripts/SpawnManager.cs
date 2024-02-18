@@ -22,6 +22,8 @@ public class SpawnManager : MonoBehaviour
         public int waveDuration;
         private float waveTimer;
 
+        // Enemy Varaibles
+        
 
     // Start is called before the first frame update
     void Start()

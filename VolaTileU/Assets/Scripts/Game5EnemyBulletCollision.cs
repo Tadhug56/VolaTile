@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Game5BulletCollision : MonoBehaviour
+public class Game5EnemyBulletCollision : MonoBehaviour
 {
     // Bullet Collision Variables
 
@@ -20,14 +20,13 @@ public class Game5BulletCollision : MonoBehaviour
     // Destroys the enemy and the bullet if they collide
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        var enemy = collision.GetComponent<Game5Enemy>(); // Reference to the Game5Enemy script on the collided enemy prefab
-        
-        // If the bullet collides with an enemy delete the bullet and deal damage
-        if(enemy)
+        var player = collision.GetComponent<Game5PlayerAttributes>(); // Reference to the Game5PlayerAttributes script on the collided player
+
+        // If the bullet collides with the player delete the bullet and deal damage
+        if(player)
         {
             Destroy(gameObject); // Destroys the bullet
-            enemy.TakeDamage(damage); // Calls the TakeDamage method in the Game5Enemy script
+            player.TakeDamage(damage); // Calls the TakeDamage method in the Game5PlayerAttributes script
         }
-    
     }
 }

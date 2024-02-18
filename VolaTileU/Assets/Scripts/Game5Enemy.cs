@@ -16,6 +16,7 @@ public class Game5Enemy : MonoBehaviour
         private GameObject player;
 
         // Enemey related variables
+        private Rigidbody2D enemy;
         private float speed = 3.0f;
         private float distance;
 
@@ -23,6 +24,7 @@ public class Game5Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        enemy = this.GetComponent<Rigidbody2D>();
         player = GameObject.FindWithTag("Player");  // Assigns the enemies target to the player as it has the player tag
         health = maxHealth;
     }
@@ -32,6 +34,7 @@ public class Game5Enemy : MonoBehaviour
     void Update()
     {
         EnemyMovement();
+        Attack();
     }
 
 
@@ -50,9 +53,20 @@ public class Game5Enemy : MonoBehaviour
     // Moves the enemy towards the player
     void EnemyMovement()
     {
+        // Directional Movement
         distance = Vector2.Distance(transform.position, player.transform.position); // Calculates the distance between the enemy and the player
         Vector2 direction = player.transform.position - transform.position; // Calculates the direction it needs to face
+        direction.Normalize();
 
-        transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime); // Moves the enmey towards the player
+        transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime); // Moves the enemy towards the player
+
+        // Rotation
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
+    }
+
+    protected virtual void Attack()
+    {
+        // DO NOTHING
     }
 }
