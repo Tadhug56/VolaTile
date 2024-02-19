@@ -302,6 +302,8 @@ MonoBehaviour:
   enemies:
   - enemeyPrefab: {fileID: 1384741748399864279, guid: 158978cb93fb24f1e8d3c23173755f60, type: 3}
     cost: 1
+  - enemeyPrefab: {fileID: 1254587251640712525, guid: c341e9d4272244f299ba6536f12447bd, type: 3}
+    cost: 1
   enemiesToSpawn: []
   spawnLocation: {fileID: 1837119819}
   currentWave: 1
