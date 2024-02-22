@@ -7,8 +7,8 @@ public class Game5Enemy : MonoBehaviour
     // Enemy Variables
 
         // Health related variables
-        private float health;
-        public float maxHealth = 5.0f;
+        protected float health;
+        protected float maxHealth = 5.0f;
 
     // Enemey Movement Variables
 
@@ -51,14 +51,18 @@ public class Game5Enemy : MonoBehaviour
     }
 
     // Moves the enemy towards the player
-    protected virtual void EnemyMovement() 
+    protected virtual void EnemyMovement()
     {
         // Directional Movement
         //distance = Vector2.Distance(transform.position, player.transform.position); // Calculates the distance between the enemy and the player
         Vector2 direction = player.transform.position - transform.position; // Calculates the direction it needs to face
         direction.Normalize();
 
+            
+
         transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime); // Moves the enemy towards the player
+
+
 
         // Rotation
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
