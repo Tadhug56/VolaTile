@@ -13,12 +13,12 @@ public class Game5Enemy : MonoBehaviour
     // Enemey Movement Variables
 
         // Playe related variables
-        private GameObject player;
+        protected GameObject player;
 
         // Enemey related variables
         private Rigidbody2D enemy;
-        private float speed = 3.0f;
-        private float distance;
+        protected float speed = 3.0f;
+        protected float distance;
 
 
     // Start is called before the first frame update
@@ -51,10 +51,10 @@ public class Game5Enemy : MonoBehaviour
     }
 
     // Moves the enemy towards the player
-    void EnemyMovement()
+    protected virtual void EnemyMovement() 
     {
         // Directional Movement
-        distance = Vector2.Distance(transform.position, player.transform.position); // Calculates the distance between the enemy and the player
+        //distance = Vector2.Distance(transform.position, player.transform.position); // Calculates the distance between the enemy and the player
         Vector2 direction = player.transform.position - transform.position; // Calculates the direction it needs to face
         direction.Normalize();
 

@@ -40,4 +40,26 @@ public class Game5Shooter : Game5Enemy
 
         bulletRb.velocity = transform.up * bulletSpeed; // Sets the velocity (Fires in the direction the spawn point is facing)
     }
+
+    protected override void EnemyMovement()
+    {
+        if((distance = Vector2.Distance(transform.position, player.transform.position))>3)
+        {
+            //movement
+            transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
+
+            // Rotation
+            Vector2 direction = player.transform.position - transform.position; // Calculates the direction it needs to face
+            direction.Normalize();
+
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
+        }
+
+        else if ((distance = Vector2.Distance(transform.position, player.transform.position))<3)
+        {
+            transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, -speed * Time.deltaTime);
+        }
+    }
+    
 }
