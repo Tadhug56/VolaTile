@@ -10,7 +10,7 @@ public class Game5PlayerController : MonoBehaviour
         // Movement Variables
 
             //Directional Variables
-            private float speed = 5.0f;
+            public float speed = 5.0f;
             private float smoothMovementInputTime = 0.1f;
             private Vector2 moveInput;
             private Vector2 smoothMovementInput;

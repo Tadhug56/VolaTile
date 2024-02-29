@@ -19,4 +19,9 @@ public class Game5CameraController : MonoBehaviour
     {
         transform.position = new Vector3(target.transform.position.x, target.transform.position.y, transform.position.z); // Moves the camera with the player
     }
+
+    public void NewGame()
+    {
+        Debug.Log("Working");
+    }
 }

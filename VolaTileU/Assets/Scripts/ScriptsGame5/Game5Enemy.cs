@@ -12,7 +12,7 @@ public class Game5Enemy : MonoBehaviour
 
     // Enemey Movement Variables
 
-        // Playe related variables
+        // Player related variables
         private GameObject player;
 
         // Enemey related variables

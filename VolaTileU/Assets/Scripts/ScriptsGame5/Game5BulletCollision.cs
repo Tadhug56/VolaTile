@@ -20,7 +20,7 @@ public class Game5BulletCollision : MonoBehaviour
     // Destroys the enemy and the bullet if they collide
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        var enemy = collision.GetComponent<Game5Enemy>(); // Reference to the Game5Enemy script on the collided enemy prefab
+        var enemy = collision.GetComponent<Game5Enemy>(); // Reference to the Game5Enemy script on the collided enemy prefab // COULD CHANGE TO A TAG SYSTEM
         
         // If the bullet collides with an enemy delete the bullet and deal damage
         if(enemy)

@@ -13,7 +13,7 @@ public class Game5Shooter : Game5Enemy
 
         // Firing related variables
         private float bulletSpeed = 10.0f;
-        private float shotDelay = 0.3f;
+        private float shotDelay = 1f;
         private float lastShotFired;
         private Vector3 spawnPointOffset = new Vector3(0, 1, 0);
         
