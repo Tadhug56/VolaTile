@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -3206117525966758777}
   m_Layer: 0
   m_Name: Game5Bullet
-  m_TagString: Untagged
+  m_TagString: Game5Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -136,5 +136,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3c56080f855444b580b3fd65f9ad947, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 3
-  enemy: {fileID: -388425240422307927, guid: 158978cb93fb24f1e8d3c23173755f60, type: 3}

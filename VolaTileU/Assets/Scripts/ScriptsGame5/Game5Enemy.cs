@@ -9,6 +9,7 @@ public class Game5Enemy : MonoBehaviour
         // Health related variables
         protected float health;
         protected float maxHealth = 5.0f;
+    
 
     // Enemey Movement Variables
 
@@ -17,16 +18,27 @@ public class Game5Enemy : MonoBehaviour
 
         // Enemey related variables
         private Rigidbody2D enemy;
-        protected float speed = 3.0f;
+        public static float speed;
         protected float distance;
+    
+    // Script References
+
+        // Time management
+        protected TimeManager timeManager;
 
 
     // Start is called before the first frame update
     void Start()
     {
         enemy = this.GetComponent<Rigidbody2D>();
-        player = GameObject.FindWithTag("Player");  // Assigns the enemies target to the player as it has the player tag
+        player = GameObject.FindWithTag("Game5Player");  // Assigns the enemies target to the player as it has the player tag
         health = maxHealth;
+
+        // Time Manager
+
+         timeManager = GameObject.FindGameObjectWithTag("TimeManager").GetComponent<TimeManager>();
+
+        DefaultSpeeds();
     }
 
 
@@ -37,6 +49,13 @@ public class Game5Enemy : MonoBehaviour
         Attack();
     }
 
+    protected virtual void DefaultSpeeds()
+    {
+        // Not Focused Speeds
+        speed *= timeManager.notFocusedSpeed;
+    }
+
+    
 
     // Takes the damage parameter of the weapon the player and removes health from the enemy based on that number and destroys the enemy if its health is below or equal to zero (Called when a collision is detected)
     public void TakeDamage(float damage)
@@ -58,11 +77,7 @@ public class Game5Enemy : MonoBehaviour
         Vector2 direction = player.transform.position - transform.position; // Calculates the direction it needs to face
         direction.Normalize();
 
-            
-
         transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime); // Moves the enemy towards the player
-
-
 
         // Rotation
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;

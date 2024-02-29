@@ -12,12 +12,21 @@ public class Game5Shooter : Game5Enemy
         public Transform game5Shooter;
 
         // Firing related variables
-        private float bulletSpeed = 10.0f;
-        private float shotDelay = 1f;
+        public static float bulletSpeed = 10.0f;
+        public static float shotDelay = 1f;
         private float lastShotFired;
         private Vector3 spawnPointOffset = new Vector3(0, 1, 0);
+
+    // Script References
+
         
         
+    protected override void DefaultSpeeds()
+    {
+        // Not Focused Speeds
+        bulletSpeed *= timeManager.notFocusedSpeed;
+        shotDelay /= timeManager.notFocusedSpeed;
+    }
 
     protected override void Attack()
     {
@@ -40,7 +49,8 @@ public class Game5Shooter : Game5Enemy
 
         bulletRb.velocity = transform.up * bulletSpeed; // Sets the velocity (Fires in the direction the spawn point is facing)
     }
-     protected override void EnemyMovement()
+
+    protected override void EnemyMovement()
     {
         // Directional Movement
         distance = Vector2.Distance(transform.position, player.transform.position); // Calculates the distance between the enemy and the player
@@ -51,6 +61,7 @@ public class Game5Shooter : Game5Enemy
         {
             transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime); // Moves the enemy towards the player
         }
+
         if (distance < 2)
         {
             transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, -speed * Time.deltaTime); // Moves the enemy towards the player

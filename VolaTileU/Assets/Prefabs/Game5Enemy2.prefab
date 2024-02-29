@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 204068295082390211}
   - component: {fileID: 2773179327569273648}
   - component: {fileID: -4922512122686401018}
-  - component: {fileID: 7985888282837030538}
   - component: {fileID: -7524865743112619709}
+  - component: {fileID: -6066925458010366134}
   m_Layer: 0
   m_Name: Game5Enemy2
-  m_TagString: Enemy
+  m_TagString: Game5Shooter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -113,21 +113,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &7985888282837030538
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1254587251640712525}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 800a5d5fa0cbe43538e4918520c8a135, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 5
-  bulletPrefab: {fileID: 1302493005692272324, guid: 9a53dd323ed5a482fa85b823506a0055, type: 3}
-  game5Shooter: {fileID: 204068295082390211}
 --- !u!50 &-7524865743112619709
 Rigidbody2D:
   serializedVersion: 4
@@ -149,3 +134,20 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &-6066925458010366134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1254587251640712525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 800a5d5fa0cbe43538e4918520c8a135, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
+  bulletPrefab: {fileID: 1302493005692272324, guid: 9a53dd323ed5a482fa85b823506a0055, type: 3}
+  game5Shooter: {fileID: 204068295082390211}
+  bulletSpeed: 10
+  shotDelay: 1

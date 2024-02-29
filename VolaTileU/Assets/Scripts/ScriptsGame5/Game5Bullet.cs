@@ -12,11 +12,23 @@ public class Game5Bullet : MonoBehaviour
         public GameObject bulletPrefab;
 
         // Firing related variables
-        private float bulletSpeed = 10.0f;
-        private float shotDelay = 0.3f;
+        public static float bulletSpeed = 10.0f;
+        public static float shotDelay = 0.3f;
         private float lastShotFired;
         private bool fireContinously;
 
+    // Script References
+
+    private TimeManager timeManager;
+
+    void Start()
+    {
+        timeManager = GameObject.FindGameObjectWithTag("TimeManager").GetComponent<TimeManager>();
+
+        // Not Focused Speeds
+        bulletSpeed *= timeManager.notFocusedSpeed;
+        shotDelay /= timeManager.notFocusedSpeed;
+    }
 
     // Update is called once per frame
     void FixedUpdate()

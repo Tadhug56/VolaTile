@@ -25,10 +25,16 @@ public class SpawnManager : MonoBehaviour
         // Enemy Varaibles
         
 
+        // Script References
+
+        public ViewManager viewManager;
+
     // Start is called before the first frame update
     void Start()
     {
+        //viewmanager = GameObject.FindGameObjectWithTag("ViewManager").GetComponent<ViewManager>();
         GenerateWave();
+        viewManager.Focus();
     }
 
 

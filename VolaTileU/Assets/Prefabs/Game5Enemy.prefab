@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3290490249562643906}
   m_Layer: 0
   m_Name: Game5Enemy
-  m_TagString: Enemy
+  m_TagString: Game5Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -125,7 +125,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c02a1b439a7842beb0e5dfa2d32fd49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5
 --- !u!50 &3290490249562643906
 Rigidbody2D:
   serializedVersion: 4

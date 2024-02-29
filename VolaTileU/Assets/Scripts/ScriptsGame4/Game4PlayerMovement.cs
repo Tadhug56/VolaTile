@@ -3,41 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Game5PlayerController : MonoBehaviour
+public class Game4PlayerMovement : MonoBehaviour
 {
     // Player Controller Variables
 
         // Movement Variables
 
             //Directional Variables
-            public static float speed = 5.0f;
+            public float speed = 5.0f;
             private float smoothMovementInputTime = 0.1f;
             private Vector2 moveInput;
             private Vector2 smoothMovementInput;
             private Vector2 smoothMovementInputVelocity; 
 
             // Rotation Variables
-            public static float rotationSpeed = 4000.0f;
+            private float rotationSpeed = 4000.0f;
 
         // Rigidbody Variables
 
         private Rigidbody2D playerRb;
 
-        // Script References
-       private TimeManager timeManager;
     
     // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody2D>();
-
-        // Time Manager
-
-         timeManager = GameObject.FindGameObjectWithTag("TimeManager").GetComponent<TimeManager>();
-
-            // Not Focused Speeds
-            speed *= timeManager.notFocusedSpeed;
-            rotationSpeed *= timeManager.notFocusedSpeed;
     }
 
 
