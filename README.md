@@ -1,5 +1,4 @@
 # VolaTile
-A game made for the 2024 Games Fleadh
 
 A fast paced, multi-tasking onslaught where you'll be controlling 9 seperate and uniquely different smaller games.
 
