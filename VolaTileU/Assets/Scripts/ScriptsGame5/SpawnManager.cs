@@ -11,9 +11,13 @@ public class SpawnManager : MonoBehaviour
 
         public List<Enemy> enemies = new List<Enemy>();
         public List<GameObject> enemiesToSpawn = new List<GameObject>();
-        public Transform spawnLocation;
+        public List<Vector3> spawnPositions;
+        private Vector3 spawnPosition;
         private float spawnInterval;
         private float spawnTimer;
+        private float radius = 8.0f;
+        private float numberOfSpawnLocations = 12.0f;
+        
 
         // Wave Variables
 
@@ -22,8 +26,11 @@ public class SpawnManager : MonoBehaviour
         public int waveDuration;
         private float waveTimer;
 
-        // Enemy Varaibles
+        // Enemy Variables
+
+        // Player Variables
         
+        public GameObject player;
 
         // Script References
 
@@ -32,7 +39,6 @@ public class SpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //viewmanager = GameObject.FindGameObjectWithTag("ViewManager").GetComponent<ViewManager>();
         GenerateWave();
         viewManager.Focus();
     }
@@ -41,11 +47,19 @@ public class SpawnManager : MonoBehaviour
     // Updates based on the physics frames
     void FixedUpdate()
     {
+        CalculateSpawnRange();
+        SpawnEnemies();
+    }
+
+
+    public void SpawnEnemies()
+    {
         if(spawnTimer <= 0)
         {
+            int circlePosition = Random.Range(0, spawnPositions.Count);
             if(enemiesToSpawn.Count > 0)
             {
-                Instantiate(enemiesToSpawn[0], spawnLocation.position, Quaternion.identity);
+                Instantiate(enemiesToSpawn[0], spawnPositions[circlePosition], Quaternion.identity);
                 enemiesToSpawn.RemoveAt(0);
                 spawnTimer = spawnInterval;
             }
@@ -62,9 +76,6 @@ public class SpawnManager : MonoBehaviour
             waveTimer -= Time.fixedDeltaTime;
         }
     }
-
-
-    // CREATED METHODS
 
     // Generates the wave of enemies based on wave value, spawn interval and wave timer
     public void GenerateWave()
@@ -107,7 +118,23 @@ public class SpawnManager : MonoBehaviour
         enemiesToSpawn = generatedEnemies; // Sets the new list of enemies to spawn to the ones decided on this wave
     }
 
+    // Creates a list of spawn positions around in a circle radius around the player that enemies can spawn from
+    private void CalculateSpawnRange()
+    {
+        float angleStep = 360f / numberOfSpawnLocations;;
+        
+        spawnPositions = new List<Vector3>(); // List to store calculated spawn positions
 
+        for(int i = 0; i < numberOfSpawnLocations; i++)
+        {
+            float angle = angleStep * i;
+            float x = Mathf.Sin(Mathf.Deg2Rad * angle) * radius;
+            float y = Mathf.Cos(Mathf.Deg2Rad * angle) * radius;
+            Vector3 spawnPosition = player.transform.position + new Vector3(x, y, 0);
+            spawnPositions.Add(spawnPosition);
+        }
+    }
+    
     // CLASS DEFINITIONS
 
     [System.Serializable]
