@@ -9,15 +9,12 @@ public class Game4SpawnManager : MonoBehaviour
     
     
     // Spawner Variables
+    private List<Vector3> spawnPositions;
     private Transform spawnLocation;
-
-    public Transform spawnerN;
-    public Transform spawnerS;
-    public Transform spawnerE;
-    public Transform spawnerW;
-
+    private float radius = 8.0f;
+    private float numberOfSpawnLocations = 12;
     public static float spawnTimer;
-    public static float spawnDelay = 1000f;
+    public static float spawnDelay = 25.0f;
 
     // Player Variables
     public GameObject player;
@@ -26,15 +23,29 @@ public class Game4SpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SpawnLasers();
+        spawnLocation = player.transform;
     }
 
     // Update is called once per frame
     void Update()
     {
+        CalculateSpawnRange();
+
+        SpawnLasers();
+    }
+
+
+    private void SpawnLasers()
+    {
         if(spawnTimer <= 0)
         {
-            SpawnLasers();
+            int circlePosition = Random.Range(0, spawnPositions.Count);
+
+            Vector3 direction = spawnPositions[circlePosition] - player.transform.position;
+            Quaternion rotation = Quaternion.LookRotation(Vector3.forward, direction);
+
+            Instantiate(laserPrefab, spawnPositions[circlePosition], rotation);
+
             spawnTimer = spawnDelay;
         }
 
@@ -44,40 +55,21 @@ public class Game4SpawnManager : MonoBehaviour
         }
     }
 
-    private void SpawnLasers()
+   // Creates a list of spawn positions around in a circle radius around the player that enemies can spawn from
+    private void CalculateSpawnRange()
     {
-        spawnLocation = WhichSpawner();
-        Vector3 direction = player.transform.position-transform.position;
-        spawnLocation.rotation = Quaternion.LookRotation(direction);
-        Instantiate(laserPrefab, spawnLocation.position, spawnLocation.rotation);
-    }
+        float angleStep = 360f / numberOfSpawnLocations;;
+        
+        spawnPositions = new List<Vector3>(); // List to store calculated spawn positions
 
-    private Transform WhichSpawner()
-    {
-        int spawner = Random.Range(1, 4);
-
-        switch(spawner)
+        for(int i = 0; i < numberOfSpawnLocations; i++)
         {
-            case 1:
-
-                return spawnerN;
-
-            case 2:
-
-                return spawnerS;
-
-            case 3:
-
-                return spawnerW;
-
-            case 4:
-
-                return spawnerE;
-
-            default:
-
-                return spawnerN;
-                
+            float angle = angleStep * i;
+            float x = Mathf.Sin(Mathf.Deg2Rad * angle) * radius;
+            float y = Mathf.Cos(Mathf.Deg2Rad * angle) * radius;
+            Vector3 spawnPosition = player.transform.position + new Vector3(x, y, 0);
+            spawnPositions.Add(spawnPosition);
         }
     }
+    
 }
