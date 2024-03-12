@@ -10,14 +10,14 @@ public class Game4PlayerMovement : MonoBehaviour
         // Movement Variables
 
             //Directional Variables
-            public float speed = 5.0f;
+            public static float speed = 5.0f * TimeManager.slowMotionMultiplier;
             private float smoothMovementInputTime = 0.1f;
             private Vector2 moveInput;
             private Vector2 smoothMovementInput;
             private Vector2 smoothMovementInputVelocity; 
 
             // Rotation Variables
-            private float rotationSpeed = 4000.0f;
+            public static float rotationSpeed = 4000.0f * TimeManager.slowMotionMultiplier;
 
         // Rigidbody Variables
 

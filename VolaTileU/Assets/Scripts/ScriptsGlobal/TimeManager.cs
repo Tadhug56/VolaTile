@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TimeManager : MonoBehaviour
 {
-    public float notFocusedSpeed;
+    public static float slowMotionMultiplier;
 
     // SCRIPT REFERENCES
 
@@ -14,18 +14,7 @@ public class TimeManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        notFocusedSpeed = 0.01f;
-
-        // GAME VARIABLES
-        
-            // GAME 5
-            /*
-            game5Bullet = GameObject.FindGameObjectWithTag("Game5Player").GetComponent<Game5Bullet>();
-            game5Enemy = GameObject.FindGameObjectWithTag("Game5Enemy").GetComponent<Game5Enemy>();
-            game5PlayerController = GameObject.FindGameObjectWithTag("Game5Player").GetComponent<Game5PlayerController>();
-            game5Shooter = GameObject.FindGameObjectWithTag("Game5Shooter").GetComponent<Game5Shooter>();
-            */
-
+        slowMotionMultiplier = 0.01f;
     }
 
     // Update is called once per frame
@@ -36,7 +25,16 @@ public class TimeManager : MonoBehaviour
 
     public void Focus4()
     {
+        // Spawners
+        Game4SpawnManager.dodgeDelay = 0.5f;
+        Game4SpawnManager.spawnDelay = 1.0f;
 
+        // Player
+        Game4PlayerMovement.speed = 5.0f;
+        Game4PlayerMovement.rotationSpeed = 4000.0f;
+
+        // Laser
+        Game4LaserCollision.laserLife = 1.0f;
     }
 
     public void Focus5()
@@ -44,9 +42,11 @@ public class TimeManager : MonoBehaviour
         // Bullet
         Game5Bullet.bulletSpeed = 10.0f;
         Game5Bullet.shotDelay = 0.3f;
+        Game5BulletCollision.bulletLife = 3.0f;
 
         // Enemy
         Game5Enemy.speed = 3.0f;
+        Game5EnemyBulletCollision.bulletLife = 3.0f;
 
         // Player
         Game5PlayerController.speed = 5.0f;

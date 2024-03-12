@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Game4LaserCollision : MonoBehaviour
 {
-    private float laserLife = 1.0f;
+    public static float laserLife = 1.0f * TimeManager.slowMotionMultiplier;
 
     void Awake()
     {

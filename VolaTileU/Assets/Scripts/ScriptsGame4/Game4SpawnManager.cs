@@ -22,10 +22,10 @@ public class Game4SpawnManager : MonoBehaviour
 
         // Timers
         public static float spawnTimer;
-        public static float spawnDelay = 1.0f;
+        public static float spawnDelay = 1.0f * TimeManager.slowMotionMultiplier;
 
         public static float dodgeTimer;
-        public static float dodgeDelay = 0.5f; 
+        public static float dodgeDelay = 0.5f * TimeManager.slowMotionMultiplier; 
 
     // Player Variables
     public GameObject player;

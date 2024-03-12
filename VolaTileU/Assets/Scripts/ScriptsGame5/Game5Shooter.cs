@@ -12,21 +12,11 @@ public class Game5Shooter : Game5Enemy
         public Transform game5Shooter;
 
         // Firing related variables
-        public static float bulletSpeed = 10.0f;
-        public static float shotDelay = 1f;
+        public static float bulletSpeed = 10.0f * TimeManager.slowMotionMultiplier;
+        public static float shotDelay = 1.0f * TimeManager.slowMotionMultiplier;
         private float lastShotFired;
         private Vector3 spawnPointOffset = new Vector3(0, 1, 0);
 
-    // Script References
-
-        
-        
-    protected override void DefaultSpeeds()
-    {
-        // Not Focused Speeds
-        bulletSpeed *= timeManager.notFocusedSpeed;
-        shotDelay /= timeManager.notFocusedSpeed;
-    }
 
     protected override void Attack()
     {

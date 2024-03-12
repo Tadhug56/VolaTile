@@ -18,7 +18,7 @@ public class Game5Enemy : MonoBehaviour
 
         // Enemey related variables
         private Rigidbody2D enemy;
-        public static float speed;
+        public static float speed = 3.0f * TimeManager.slowMotionMultiplier;
         protected float distance;
     
     // Script References
@@ -37,8 +37,6 @@ public class Game5Enemy : MonoBehaviour
         // Time Manager
 
          timeManager = GameObject.FindGameObjectWithTag("TimeManager").GetComponent<TimeManager>();
-
-        DefaultSpeeds();
     }
 
 
@@ -48,13 +46,6 @@ public class Game5Enemy : MonoBehaviour
         EnemyMovement();
         Attack();
     }
-
-    protected virtual void DefaultSpeeds()
-    {
-        // Not Focused Speeds
-        speed *= timeManager.notFocusedSpeed;
-    }
-
     
 
     // Takes the damage parameter of the weapon the player and removes health from the enemy based on that number and destroys the enemy if its health is below or equal to zero (Called when a collision is detected)

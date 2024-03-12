@@ -6,7 +6,7 @@ public class Game5BulletCollision : MonoBehaviour
 {
     // Bullet Collision Variables
 
-    private float bulletLife = 3.0f; // Time the bullet is alive for
+    public static float bulletLife = 3.0f * TimeManager.slowMotionMultiplier; // Time the bullet is alive for
     private float damage = 2.5f;
 
 
