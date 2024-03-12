@@ -5,6 +5,17 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - Camera5
+  - ViewManager
+  - Game5Bullet
+  - Game5Enemy
+  - Game5Shooter
+  - Game5EnemyBullet
+  - Cassette
+  - TImeManager
+  - Game5Player
+  - TimeManager
+  - SpeedManager
   layers:
   - Default
   - TransparentFX

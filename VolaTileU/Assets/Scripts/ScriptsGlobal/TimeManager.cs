@@ -25,6 +25,7 @@ public class TimeManager : MonoBehaviour
 
     public void Focus4()
     {
+        Debug.Log("Focus4 Called");
         // Spawners
         Game4SpawnManager.dodgeDelay = 0.5f;
         Game4SpawnManager.spawnDelay = 1.0f;
@@ -39,6 +40,7 @@ public class TimeManager : MonoBehaviour
 
     public void Focus5()
     {
+        Debug.Log("Focus5 Called");
         // Bullet
         Game5Bullet.bulletSpeed = 10.0f;
         Game5Bullet.shotDelay = 0.3f;

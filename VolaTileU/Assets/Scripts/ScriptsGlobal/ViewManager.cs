@@ -10,21 +10,25 @@ public class ViewManager : MonoBehaviour
 
     // ViewManager Variables
     private float newWidth = 0.5f;
-    public int focus;
+    public static int focus;
 
     // Script References
     private TimeManager timeManager;
+    private DefaultSpeeds speedManager;
 
     void Start()
     {
         timeManager = GameObject.FindGameObjectWithTag("TimeManager").GetComponent<TimeManager>();
+        speedManager = GameObject.FindGameObjectWithTag("SpeedManager").GetComponent<DefaultSpeeds>();
 
         focus = 5;
+
+        Focus();
     }
 
     void Update()
     {
-        Focus();
+    
     }
  
     // CONTROLS CAMERA TRANSITIONS
@@ -39,17 +43,20 @@ public class ViewManager : MonoBehaviour
 
     public void Focus()
     {
+        Debug.Log("Focus Called");
         switch(focus)
         {
             case 4:
 
                 timeManager.Focus4();
+                speedManager.DefaultGame5();
 
             break;
 
             case 5:
 
                 timeManager.Focus5();
+                
 
             break;
 
