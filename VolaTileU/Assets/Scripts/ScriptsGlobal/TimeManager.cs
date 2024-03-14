@@ -14,7 +14,7 @@ public class TimeManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        slowMotionMultiplier = 0.01f;
+        slowMotionMultiplier = 0.05f;
     }
 
     // Update is called once per frame
