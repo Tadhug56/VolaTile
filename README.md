@@ -7,4 +7,4 @@ and danger is creeping in from all sides.
 
 Currently in development
 
-Developed by Tadhg Mulvey, James Berney, Ben McCarron!
+Developed by Tadhg Mulvey
