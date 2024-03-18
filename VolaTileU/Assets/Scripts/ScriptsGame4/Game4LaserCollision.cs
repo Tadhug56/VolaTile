@@ -4,11 +4,18 @@ using UnityEngine;
 
 public class Game4LaserCollision : MonoBehaviour
 {
-    public static float laserLife = 1.0f * TimeManager.slowMotionMultiplier;
+    public float laserLife = 1.0f;
+    public float timeAlive;
 
     void Awake()
     {
-        Destroy(gameObject, laserLife); // Destroys the bullet after its time is up
+        //Destroy(gameObject, laserLife); // Destroys the bullet after its time is up
+        timeAlive = 0;
+    }
+
+    void Update()
+    {
+        DynamicLife();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -24,4 +31,23 @@ public class Game4LaserCollision : MonoBehaviour
         }
     
     }
+
+    private void DynamicLife()
+    {
+        if(ViewManager.focus == 4)
+        {
+            timeAlive += Time.deltaTime;
+        }
+
+        else
+        {
+            timeAlive += (Time.deltaTime * TimeManager.slowMotionMultiplier);
+        }
+
+        if(timeAlive >= laserLife)
+        {
+            Destroy(gameObject);
+        }
+    }
+
 }
