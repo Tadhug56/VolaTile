@@ -6,6 +6,7 @@ public class Game4SpawnManager : MonoBehaviour
 {
     // Laser Variables
     public GameObject laserPrefab;
+    public static Coroutine spawning;
     
     
     // Spawner Variables
@@ -22,10 +23,10 @@ public class Game4SpawnManager : MonoBehaviour
 
         // Timers
         public static float spawnTimer;
-        public static float spawnDelay = 1.0f * TimeManager.slowMotionMultiplier;
+        public static float spawnDelay = 1.0f / TimeManager.slowMotionMultiplier;
 
         public static float dodgeTimer;
-        public static float dodgeDelay = 0.5f * TimeManager.slowMotionMultiplier; 
+        public static float dodgeDelay = 0.5f / TimeManager.slowMotionMultiplier; 
 
     // Player Variables
     public GameObject player;
@@ -39,9 +40,18 @@ public class Game4SpawnManager : MonoBehaviour
         dodgeTimer = dodgeDelay;
 
         // Start the spawning logic
+        RestartSpawn();
+    }
+
+    public void RestartSpawn()
+    {
         StartCoroutine(SpawnRoutine());
     }
 
+    public void StopSpawning()
+    {
+        StopCoroutine(SpawnRoutine());
+    }
 
     // Handles spawning and the delays between spawn and dodge timers
     private IEnumerator SpawnRoutine()

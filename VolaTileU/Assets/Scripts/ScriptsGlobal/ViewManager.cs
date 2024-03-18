@@ -28,7 +28,7 @@ public class ViewManager : MonoBehaviour
 
     void Update()
     {
-    
+        MoveFocus();
     }
  
     // CONTROLS CAMERA TRANSITIONS
@@ -39,6 +39,23 @@ public class ViewManager : MonoBehaviour
         camera4.rect = new Rect(0f, 0f, newWidth, 1f);
         camera5.enabled = true;
         camera4.enabled = true;
+    }
+
+    public void MoveFocus()
+    {
+        if(Input.GetKeyDown("j"))
+        {
+            Debug.Log("J pressed");
+            focus = 4;
+            Focus();
+        }
+
+         if(Input.GetKeyDown("l"))
+        {
+            Debug.Log("L pressed");
+            focus = 5;
+            Focus();
+        }
     }
 
     public void Focus()
@@ -56,8 +73,8 @@ public class ViewManager : MonoBehaviour
             case 5:
 
                 timeManager.Focus5();
+                speedManager.DefaultGame4();
                 
-
             break;
 
                 

@@ -7,7 +7,7 @@ public class TimeManager : MonoBehaviour
     public static float slowMotionMultiplier;
 
     // SCRIPT REFERENCES
-
+    private Game4SpawnManager game4SpawnManger;
         
 
         
@@ -15,17 +15,14 @@ public class TimeManager : MonoBehaviour
     void Start()
     {
         slowMotionMultiplier = 0.05f;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        game4SpawnManger = GameObject.FindGameObjectWithTag("Game4SpawnManager").GetComponent<Game4SpawnManager>();
     }
 
     public void Focus4()
     {
-        Debug.Log("Focus4 Called");
+        // Stops spawning of lasers so we can reset the delays
+        game4SpawnManger.StopSpawning();
+
         // Spawners
         Game4SpawnManager.dodgeDelay = 0.5f;
         Game4SpawnManager.spawnDelay = 1.0f;
@@ -35,7 +32,10 @@ public class TimeManager : MonoBehaviour
         Game4PlayerMovement.rotationSpeed = 4000.0f;
 
         // Laser
-        Game4LaserCollision.laserLife = 1.0f;
+        //Game4LaserCollision.laserLife = 1.0f;
+
+        // Restarts spawning of lasers
+        game4SpawnManger.RestartSpawn();
     }
 
     public void Focus5()

@@ -13,7 +13,7 @@ public class Game5Bullet : MonoBehaviour
 
         // Firing related variables
         public static float bulletSpeed = 10.0f * TimeManager.slowMotionMultiplier;
-        public static float shotDelay = 0.3f * TimeManager.slowMotionMultiplier;
+        public static float shotDelay = 0.3f / TimeManager.slowMotionMultiplier;
         private float lastShotFired;
         private bool fireContinously;
 

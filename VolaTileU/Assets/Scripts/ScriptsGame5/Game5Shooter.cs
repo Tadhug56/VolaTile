@@ -13,7 +13,7 @@ public class Game5Shooter : Game5Enemy
 
         // Firing related variables
         public static float bulletSpeed = 10.0f * TimeManager.slowMotionMultiplier;
-        public static float shotDelay = 1.0f * TimeManager.slowMotionMultiplier;
+        public static float shotDelay = 1.0f / TimeManager.slowMotionMultiplier;
         private float lastShotFired;
         private float bulletOffset = 0.5f; // Where the bullet spawns
 

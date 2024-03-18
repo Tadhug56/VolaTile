@@ -36,7 +36,6 @@ public class Game5PlayerController : MonoBehaviour
     {
         Movement();
         RotationDirection();
-        Debug.Log(speed);
     }
 
 
