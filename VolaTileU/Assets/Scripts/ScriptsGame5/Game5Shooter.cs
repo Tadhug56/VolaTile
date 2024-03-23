@@ -12,10 +12,14 @@ public class Game5Shooter : Game5Enemy
         public Transform game5Shooter;
 
         // Firing related variables
-        public static float bulletSpeed = 10.0f * TimeManager.slowMotionMultiplier;
+        
         public static float shotDelay = 1.0f / TimeManager.slowMotionMultiplier;
         private float lastShotFired;
         private float bulletOffset = 0.5f; // Where the bullet spawns
+
+    // Script References
+
+        Game5EnemyBullet game5EnemyBullet;
 
 
     protected override void Attack()
@@ -35,9 +39,6 @@ public class Game5Shooter : Game5Enemy
     void FireBullet()
     {
         GameObject bullet = Instantiate(bulletPrefab, game5Shooter.position + (transform.up * bulletOffset), game5Shooter.rotation); // Creates the instance of the prefab
-        Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>(); // Gets the rigidbody of the newly created bullet
-
-        bulletRb.velocity = transform.up * bulletSpeed; // Sets the velocity (Fires in the direction the spawn point is facing)
     }
 
     protected override void EnemyMovement()

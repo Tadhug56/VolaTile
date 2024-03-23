@@ -59,11 +59,12 @@ public class Game4SpawnManager : MonoBehaviour
         // Continue spawning // TODO make conditional based on if the game is in view or not.
         while(true)
         {
+            yield return new WaitForSeconds(spawnDelay);
+
             CalculateSpawnRange();
             yield return new WaitForSeconds(dodgeDelay);
 
             SpawnLasers();
-            yield return new WaitForSeconds(spawnDelay);
         }
     }
 

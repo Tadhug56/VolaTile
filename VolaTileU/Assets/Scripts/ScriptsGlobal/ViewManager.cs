@@ -45,8 +45,6 @@ public class ViewManager : MonoBehaviour
     {
         if(Input.GetKeyDown("j"))
         {
-            Debug.Log("J pressed");
-
             if(focus != 4)
             {
                 focus = 4;
@@ -55,9 +53,7 @@ public class ViewManager : MonoBehaviour
         }
 
          if(Input.GetKeyDown("l"))
-        {
-            Debug.Log("L pressed");
-            
+        {   
             if(focus != 5)
             {
                 focus = 5;
@@ -68,7 +64,6 @@ public class ViewManager : MonoBehaviour
 
     public void Focus()
     {
-        Debug.Log("Focus Called");
         switch(focus)
         {
             case 4:

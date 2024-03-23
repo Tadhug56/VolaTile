@@ -9,7 +9,6 @@ public class Game4LaserCollision : MonoBehaviour
 
     void Awake()
     {
-        //Destroy(gameObject, laserLife); // Destroys the bullet after its time is up
         timeAlive = 0;
     }
 

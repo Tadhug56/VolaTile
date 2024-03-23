@@ -40,9 +40,8 @@ public class TimeManager : MonoBehaviour
 
     public void Focus5()
     {
-        Debug.Log("Focus5 Called");
         // Bullet
-        Game5Bullet.bulletSpeed = 10.0f;
+        Game5BulletCollision.bulletSpeed = 10.0f;
         Game5Bullet.shotDelay = 0.3f;
         Game5BulletCollision.bulletLife = 3.0f;
 
@@ -55,7 +54,7 @@ public class TimeManager : MonoBehaviour
         Game5PlayerController.rotationSpeed = 4000.0f;
 
         // Shooter
-        Game5Shooter.bulletSpeed = 10.0f;
         Game5Shooter.shotDelay = 1.0f;
+        Game5EnemyBullet.enemyBulletSpeed = 10.0f;
     }
 }

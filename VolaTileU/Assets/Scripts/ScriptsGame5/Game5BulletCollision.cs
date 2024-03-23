@@ -7,13 +7,26 @@ public class Game5BulletCollision : MonoBehaviour
     // Bullet Collision Variables
 
     public static float bulletLife = 3.0f / TimeManager.slowMotionMultiplier; // Time the bullet is alive for
+    public static float bulletSpeed = 10.0f;
     private float damage = 2.5f;
+    Rigidbody2D bulletRb;
 
 
     // Called when the object is initialised
     void Awake()
     {
         Destroy(gameObject, bulletLife); // Destroys the bullet after its time is up
+        bulletRb = GetComponent<Rigidbody2D>(); // Gets the rigidbody of the newly created bullet
+    }
+
+    void FixedUpdate()
+    {
+        BulletMovement();
+    }
+
+    private void BulletMovement()
+    {
+        bulletRb.velocity = transform.up * bulletSpeed; // Sets the velocity (Fires in the direction the spawn point is facing)
     }
 
 

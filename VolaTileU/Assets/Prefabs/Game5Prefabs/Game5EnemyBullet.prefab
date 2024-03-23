@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8040969776043377024}
   - component: {fileID: -7473147281083321438}
   - component: {fileID: 9015005807379477746}
-  - component: {fileID: -2305469200994273221}
+  - component: {fileID: 7116346425450584116}
   m_Layer: 0
   m_Name: Game5EnemyBullet
   m_TagString: Game5EnemyBullet
@@ -124,7 +124,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.49999997
---- !u!114 &-2305469200994273221
+--- !u!114 &7116346425450584116
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -133,6 +133,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 1302493005692272324}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a2e2ef94bafa4513adc2e6f8e165ee3, type: 3}
+  m_Script: {fileID: 11500000, guid: 07f094578bad340238b5974fbcfe38b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletSpawnPoint: {fileID: 0}
+  bulletPrefab: {fileID: 0}
