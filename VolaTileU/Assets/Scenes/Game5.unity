@@ -346,7 +346,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 395395414}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 698.1258, y: 392.34857, z: 0.091708094}
+  m_LocalPosition: {x: 697.7, y: 392.43, z: 0.091708094}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -634,7 +634,7 @@ GameObject:
   - component: {fileID: 932654459}
   m_Layer: 0
   m_Name: Game4SpawnManager
-  m_TagString: Untagged
+  m_TagString: Game4SpawnManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -677,6 +677,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 986216037}
+  - component: {fileID: 986216038}
   m_Layer: 0
   m_Name: SpeedManager
   m_TagString: SpeedManager
@@ -699,6 +700,18 @@ Transform:
   m_Father: {fileID: 279585249}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &986216038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 986216036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c634050a18eb14cb8b6082f974d3014e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1257487099
 GameObject:
   m_ObjectHideFlags: 0
@@ -1130,7 +1143,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1936943221}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.58, y: -1.3781205, z: 0}
+  m_LocalPosition: {x: 4, y: -1.3781205, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1244,7 +1257,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3843715446295417578, guid: dc4a90b6bb8c2426f9462f401807729c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.56351
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3843715446295417578, guid: dc4a90b6bb8c2426f9462f401807729c, type: 3}
       propertyPath: m_LocalPosition.y

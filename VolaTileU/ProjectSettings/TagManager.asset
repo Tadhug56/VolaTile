@@ -16,6 +16,7 @@ TagManager:
   - Game5Player
   - TimeManager
   - SpeedManager
+  - Game4SpawnManager
   layers:
   - Default
   - TransparentFX
