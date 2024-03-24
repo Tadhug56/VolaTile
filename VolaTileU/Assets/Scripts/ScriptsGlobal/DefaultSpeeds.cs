@@ -10,14 +10,14 @@ public class DefaultSpeeds : MonoBehaviour
     {
         // Spawners
         Game4SpawnManager.dodgeDelay = 0.5f / TimeManager.slowMotionMultiplier;
-        Game4SpawnManager.spawnDelay = 1.0f / TimeManager.slowMotionMultiplier;
+        Game4SpawnManager.spawnDelay = 2.0f / TimeManager.slowMotionMultiplier;
 
         // Player
         Game4PlayerMovement.speed = 5.0f * TimeManager.slowMotionMultiplier;
         Game4PlayerMovement.rotationSpeed = 4000.0f * TimeManager.slowMotionMultiplier;
 
         // Laser
-        //Game4LaserCollision.laserLife = 1.0f / TimeManager.slowMotionMultiplier;
+    
     }
 
     public void DefaultGame5()

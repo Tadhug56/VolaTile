@@ -23,7 +23,7 @@ public class Game4SpawnManager : MonoBehaviour
 
         // Timers
         public static float spawnTimer;
-        public static float spawnDelay = 1.0f / TimeManager.slowMotionMultiplier;
+        public static float spawnDelay = 2.0f / TimeManager.slowMotionMultiplier;
 
         public static float dodgeTimer;
         public static float dodgeDelay = 0.5f / TimeManager.slowMotionMultiplier; 
@@ -59,11 +59,22 @@ public class Game4SpawnManager : MonoBehaviour
         // Continue spawning // TODO make conditional based on if the game is in view or not.
         while(true)
         {
-            yield return new WaitForSeconds(spawnDelay);
+            float startTime = Time.time;
+            
+            while(Time.time < startTime + spawnDelay)
+            {
+                yield return null;
+            }
 
             CalculateSpawnRange();
-            yield return new WaitForSeconds(dodgeDelay);
 
+            startTime = Time.time;
+
+            while(Time.time < startTime + dodgeDelay)
+            {
+                yield return null;
+            }
+            
             SpawnLasers();
         }
     }

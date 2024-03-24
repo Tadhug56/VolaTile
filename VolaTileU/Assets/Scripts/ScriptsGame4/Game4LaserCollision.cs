@@ -2,19 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Game4LaserCollision : MonoBehaviour
 {
     public float laserLife = 1.0f;
     public float timeAlive;
+    public float timeMultiplyer;
 
     void Awake()
     {
         timeAlive = 0;
+        timeMultiplyer = 1;
     }
 
     void Update()
     {
         DynamicLife();
+    }
+
+    void OnEnable()
+    {
+        ViewManager.OnFocusChange.AddListener(UpdateFocus); // Subscribe to the focus change event
+    }
+
+    void OnDisable()
+    {
+        ViewManager.OnFocusChange.RemoveListener(UpdateFocus); // Unsubscribe from the focus change event
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -28,25 +41,28 @@ public class Game4LaserCollision : MonoBehaviour
             Destroy(gameObject); // Destroys the laser
             Destroy(player);
         }
-    
     }
 
-    private void DynamicLife()
+    private void UpdateFocus(int focus)
     {
-        if(ViewManager.focus == 4)
+        if(focus == 4)
         {
-            timeAlive += Time.deltaTime;
+            timeMultiplyer = 1.0f;
         }
 
         else
         {
-            timeAlive += (Time.deltaTime * TimeManager.slowMotionMultiplier);
+            timeMultiplyer = TimeManager.slowMotionMultiplier;
         }
+    }
 
-        if(timeAlive >= laserLife)
+    private void DynamicLife()
+    {
+        timeAlive += Time.deltaTime * timeMultiplyer;
+
+        if (timeAlive >= laserLife)
         {
             Destroy(gameObject);
         }
     }
-
 }

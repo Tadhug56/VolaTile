@@ -20,9 +20,6 @@ public class TimeManager : MonoBehaviour
 
     public void Focus4()
     {
-        // Stops spawning of lasers so we can reset the delays
-        game4SpawnManger.StopSpawning();
-
         // Spawners
         Game4SpawnManager.dodgeDelay = 0.5f;
         Game4SpawnManager.spawnDelay = 1.0f;
@@ -32,10 +29,7 @@ public class TimeManager : MonoBehaviour
         Game4PlayerMovement.rotationSpeed = 4000.0f;
 
         // Laser
-        //Game4LaserCollision.laserLife = 1.0f;
-
-        // Restarts spawning of lasers
-        game4SpawnManger.RestartSpawn();
+    
     }
 
     public void Focus5()
