@@ -52,7 +52,6 @@ public class ViewManager : MonoBehaviour
     {
         if(changeFocusTime > changeFocusDelay)
         {
-            Debug.Log("Focus changed");
             if(Input.GetKeyDown("j"))
             {
                 if(focus != 4)
