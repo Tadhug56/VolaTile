@@ -41,7 +41,6 @@ public class TimeManager : MonoBehaviour
 
         // Enemy
         Game5Enemy.speed = 3.0f;
-        Game5EnemyBulletCollision.bulletLife = 3.0f;
 
         // Player
         Game5PlayerController.speed = 5.0f;

@@ -29,7 +29,6 @@ public class DefaultSpeeds : MonoBehaviour
 
         // Enemy
         Game5Enemy.speed = 3.0f * TimeManager.slowMotionMultiplier;
-        Game5EnemyBulletCollision.bulletLife = 3.0f / TimeManager.slowMotionMultiplier;
 
         // Player
         Game5PlayerController.speed = 5.0f * TimeManager.slowMotionMultiplier;
