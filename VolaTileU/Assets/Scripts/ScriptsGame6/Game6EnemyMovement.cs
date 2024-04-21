@@ -8,7 +8,7 @@ public class Game6EnemyMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     
     [Header("Attributes")]
-    [SerializeField] private float moveSpeed = 2.0f;
+    [SerializeField] private float moveSpeed = 8.0f;
 
     private Transform target;
     private int pathIndex = 0;
@@ -26,6 +26,7 @@ public class Game6EnemyMovement : MonoBehaviour
 
             if(pathIndex == Game6Manager.main.path.Length)
             {
+                Game6Spawner.onEnemyDestroy.Invoke();
                 Destroy(gameObject);
                 return;
             }
