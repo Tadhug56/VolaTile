@@ -5,7 +5,7 @@ using UnityEngine;
 public class Game6BuildManager : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private GameObject[] buildingPrefabs;
+    [SerializeField] private Game6Tower[] towers;
     public static Game6BuildManager main;
 
     private int selectedTower = 0;
@@ -15,8 +15,13 @@ public class Game6BuildManager : MonoBehaviour
         main = this;
     }
 
-    public GameObject GetSelectedTower()
+    public Game6Tower GetSelectedTower()
     {
-        return buildingPrefabs[selectedTower];
+        return towers[selectedTower];
+    }
+
+    public void SetSelectedTower(int _selectedTower)
+    {
+        selectedTower = _selectedTower;
     }
 }

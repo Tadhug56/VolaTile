@@ -33,8 +33,16 @@ public class Game6Plot : MonoBehaviour
             return;
         }
 
-        GameObject towerToBuild = Game6BuildManager.main.GetSelectedTower();
-        Instantiate(towerToBuild, transform.position, Quaternion.identity);
-        Debug.Log(transform.position);
+        Game6Tower towerToBuild = Game6BuildManager.main.GetSelectedTower();
+
+        if(towerToBuild.cost > Game6Manager.main.currency)
+        {
+            Debug.Log("You can't afford this tower!");
+            return;
+        }
+
+        Game6Manager.main.SpendCurrency(towerToBuild.cost);
+
+        Instantiate(towerToBuild.prefab, transform.position, Quaternion.identity);
     }
 }
