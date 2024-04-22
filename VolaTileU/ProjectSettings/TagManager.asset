@@ -25,8 +25,8 @@ TagManager:
   - Water
   - UI
   - Game5EnemyBullet
-  - 
-  - 
+  - Game6Enemy
+  - Game6Bullet
   - 
   - 
   - 
@@ -53,4 +53,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Game6Turrets
+    uniqueID: 3172979019
     locked: 0

@@ -11,7 +11,7 @@ public class Game6Spawner : MonoBehaviour
     [Header("Attributes")]
     [SerializeField] private int baseEnemies = 8;
     [SerializeField] private float enemiesPerSecond = 0.5f;
-    [SerializeField] private float timeBetweenWaves = 5.0f;
+    [SerializeField] private float timeBetweenWaves = 1f;
     [SerializeField] private float difficultyScalingFactor = 0.75f;
 
     [Header("Events")]
@@ -56,7 +56,7 @@ public class Game6Spawner : MonoBehaviour
         isSpawning = false;
         timeSinceLastSpawn = .0f;
         currentWave++;
-        
+
         StartCoroutine(StartWave());
     }
 
