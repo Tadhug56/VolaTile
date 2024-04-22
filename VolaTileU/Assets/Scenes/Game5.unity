@@ -10453,6 +10453,7 @@ GameObject:
   - component: {fileID: 2107595606}
   - component: {fileID: 2107595607}
   - component: {fileID: 2107595608}
+  - component: {fileID: 2107595609}
   m_Layer: 0
   m_Name: Game6Manager
   m_TagString: Untagged
@@ -10468,7 +10469,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2107595605}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 4.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10505,6 +10506,7 @@ MonoBehaviour:
   - {fileID: 236264977}
   - {fileID: 598702367}
   startPoint: {fileID: 1975135364}
+  currency: 0
 --- !u!114 &2107595608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10523,6 +10525,20 @@ MonoBehaviour:
   enemiesPerSecond: 0.5
   timeBetweenWaves: 5
   difficultyScalingFactor: 0.75
+--- !u!114 &2107595609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2107595605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 282d60e7b6ab249a2bfc07e847a474f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingPrefabs:
+  - {fileID: 3826849262527638765, guid: dba34b178ac894adb8eaf0888d0d92ac, type: 3}
 --- !u!1001 &2107916121
 PrefabInstance:
   m_ObjectHideFlags: 0
