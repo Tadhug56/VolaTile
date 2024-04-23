@@ -39,6 +39,8 @@ public class Game6TurretIce : MonoBehaviour
 
                 Game6EnemyMovement em = hit.transform.GetComponent<Game6EnemyMovement>();
                 em.UpdateSpeed(freezeValue);
+
+                StartCoroutine(ResetEnemySpeed(em));
             }
         }
     }

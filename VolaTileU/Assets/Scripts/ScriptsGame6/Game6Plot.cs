@@ -7,12 +7,15 @@ public class Game6Plot : MonoBehaviour
     [Header("References")]
     [SerializeField] private SpriteRenderer sr;
     [SerializeField] private Color hoverColor;
+    [SerializeField] public Game6Turret game6Turret;
 
-    private GameObject tower;
+    private Game6UpgradeMenu game6UpgradeMenu;
+    public GameObject towerObj;
     private Color startColor;
 
     private void Start()
     {
+        game6UpgradeMenu = GameObject.FindGameObjectWithTag("Game6UpgradeMenu").GetComponent<Game6UpgradeMenu>();
         startColor = sr.color;
     }
 
@@ -28,8 +31,16 @@ public class Game6Plot : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if(tower != null)
+        if(towerObj != null)
         {
+            if(game6UpgradeMenu.isUpgradeMenuOpen == false)
+            {
+                game6UpgradeMenu.ToggleMenu();
+            }
+
+            Game6UpgradeManager game6UpgradeManager = game6UpgradeMenu.GetComponent<Game6UpgradeManager>();
+            game6UpgradeManager.game6Turret = game6Turret;
+
             return;
         }
 
@@ -43,6 +54,7 @@ public class Game6Plot : MonoBehaviour
 
         Game6Manager.main.SpendCurrency(towerToBuild.cost);
 
-        Instantiate(towerToBuild.prefab, transform.position, Quaternion.identity);
+        towerObj = Instantiate(towerToBuild.prefab, transform.position, Quaternion.identity);
+        game6Turret = towerObj.GetComponent<Game6Turret>();
     }
 }

@@ -22,6 +22,8 @@ public class Game6Spawner : MonoBehaviour
     private int enemiesAlive;
     private int enemiesLeftToSpawn;
     private bool isSpawning = false;
+    private float eps; // Enemies per second
+    private float enemiesPerSecondCap = 15.0f;
 
     // METHODS
 
@@ -49,6 +51,7 @@ public class Game6Spawner : MonoBehaviour
         yield return new WaitForSeconds(timeBetweenWaves);
         isSpawning = true;
         enemiesLeftToSpawn = EnemiesPerWave();
+        eps = EnemiesPerSecond();
     }
 
     private void EndWave()
@@ -65,6 +68,11 @@ public class Game6Spawner : MonoBehaviour
         return Mathf.RoundToInt(baseEnemies * Mathf.Pow(currentWave, difficultyScalingFactor));
     }
 
+    private float EnemiesPerSecond()
+    {
+        return Mathf.Clamp(enemiesPerSecond * Mathf.Pow(currentWave, difficultyScalingFactor), 0.0f, enemiesPerSecondCap);
+    }
+
     private void SpawnEnemy()
     {
         if(isSpawning == false)
@@ -74,12 +82,15 @@ public class Game6Spawner : MonoBehaviour
 
         timeSinceLastSpawn += Time.deltaTime;
 
-        if(timeSinceLastSpawn >= (1f / enemiesPerSecond) && enemiesLeftToSpawn > 0)
+        if(timeSinceLastSpawn >= (1f / eps) && enemiesLeftToSpawn > 0)
         {
-            GameObject prefabToSpawn = enemyPrefabs[0];
+            int index = Random.Range(0, enemyPrefabs.Length);
+            GameObject prefabToSpawn = enemyPrefabs[index];
             Instantiate(prefabToSpawn, Game6Manager.main.startPoint.position, Quaternion.identity);
+
             enemiesLeftToSpawn--; // Reduce the enemies to spawn by 1
             enemiesAlive++; // Increases the amount if enemies alive
+
             timeSinceLastSpawn = 0.0f;
         }
 

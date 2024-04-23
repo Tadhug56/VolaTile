@@ -17,6 +17,7 @@ TagManager:
   - TimeManager
   - SpeedManager
   - Game4SpawnManager
+  - Game6UpgradeMenu
   layers:
   - Default
   - TransparentFX
@@ -56,4 +57,7 @@ TagManager:
     locked: 0
   - name: Game6Turrets
     uniqueID: 3172979019
+    locked: 0
+  - name: UI
+    uniqueID: 3405843257
     locked: 0

@@ -101,6 +101,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   targetingRange: 2
-  attackSpeed: 4
+  attackSpeed: 0.25
   freezeValue: 0.5
   freezeTime: 1

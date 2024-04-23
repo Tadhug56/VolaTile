@@ -9,7 +9,7 @@ public class Game6Bullet : MonoBehaviour
 
     [Header("Attributes")]
     [SerializeField] private float bulletSpeed = 5.0f;
-    [SerializeField] private int bulletDamage = 1;
+    [SerializeField] public float bulletDamage;
 
     public Transform target;
 
@@ -17,6 +17,7 @@ public class Game6Bullet : MonoBehaviour
     {
         if(!target)
         {
+            Destroy(gameObject);
             return;
         }
 
