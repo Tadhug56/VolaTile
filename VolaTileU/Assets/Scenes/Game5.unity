@@ -8069,6 +8069,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currencyUI: {fileID: 1667419923}
+  upgradeCostBpsUI: {fileID: 1610526891}
+  upgradeCostTargetingRangeUI: {fileID: 1214692679}
+  upgradeCostDamageUI: {fileID: 617689774}
   anim: {fileID: 1229450942}
   upgradeMenuButon: {fileID: 1009300586}
   menu: {fileID: 1153845886}

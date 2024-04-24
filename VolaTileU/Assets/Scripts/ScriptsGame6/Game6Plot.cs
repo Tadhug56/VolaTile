@@ -40,6 +40,7 @@ public class Game6Plot : MonoBehaviour
 
             Game6UpgradeManager game6UpgradeManager = game6UpgradeMenu.GetComponent<Game6UpgradeManager>();
             game6UpgradeManager.game6Turret = game6Turret;
+            Game6UpgradeMenu.main.UpdateCosts(game6Turret.upgradeCosts);
 
             return;
         }

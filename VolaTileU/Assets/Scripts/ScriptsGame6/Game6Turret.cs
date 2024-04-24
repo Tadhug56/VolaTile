@@ -12,15 +12,17 @@ public class Game6Turret : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform firingPoint;
 
-    private float targetingRange = 3.0f;
-    private float rotationSpeed = 500.0f;
-    private float bps = 1.0f; // Bullets per second
-    private float bulletDamage = 1.0f;
+    [Header("Attributes")]
+    [SerializeField] private float targetingRange = 2.5f;
+    [SerializeField] private float rotationSpeed = 500.0f;
+    [SerializeField] private float bps = 1.0f; // Bullets per second
+    [SerializeField] private float bulletDamage = 1.0f;
 
     // Upgrade Costs
-    private int bpsUpgradeCost = 100;
-    private int damageUpgradeCost = 200;
-    private int targetingRangeUpgradeCost = 150;
+    public int bpsUpgradeCost = 100;
+    public int damageUpgradeCost = 200;
+    public int targetingRangeUpgradeCost = 150;
+    public int[] upgradeCosts;
 
     // Upgrade Levels
     private int bpsLevel = 1;
@@ -45,6 +47,10 @@ public class Game6Turret : MonoBehaviour
         bpsBase = bps;
         targetingRangeBase = targetingRange;
         bulletDamageBase = bulletDamage;
+
+        upgradeCosts = new int[3];
+
+        UpdatePrice();
     }
 
     private void Update()
@@ -121,22 +127,23 @@ public class Game6Turret : MonoBehaviour
             return;
         }
 
-        Game6Manager.main.SpendCurrency(CalculateCost(bpsUpgradeCost));
+        Game6Manager.main.SpendCurrency(bpsUpgradeCost);
+
+        bpsUpgradeCost = CalculateCost(bpsUpgradeCost); // Update the cost
+        UpdatePrice();
+        Game6UpgradeMenu.main.UpdateCosts(upgradeCosts);
 
         bps = CalculateBps();
 
         bpsLevel++;
         level++;
 
-        Debug.Log("Bps " + bps);
+        
     }
 
     private float CalculateBps()
     {
-        Debug.Log("math " + Mathf.Pow(bpsLevel, 0.6f));
-        Debug.Log("base " + bpsBase);
-        return (bps + 10000.0f);
-        //return (bpsBase * Mathf.Pow(bpsLevel, 0.6f));
+        return bps + 1;
     }
 
     // Range
@@ -149,17 +156,21 @@ public class Game6Turret : MonoBehaviour
             return;
         }
 
-        Game6Manager.main.SpendCurrency(CalculateCost(targetingRangeUpgradeCost));
+        Game6Manager.main.SpendCurrency(targetingRangeUpgradeCost); // Spend the cost
 
-        targetingRange = CalculateRange();
+        targetingRangeUpgradeCost = CalculateCost(targetingRangeUpgradeCost); // Update the cost
+        UpdatePrice();
+        Game6UpgradeMenu.main.UpdateCosts(upgradeCosts);
 
-        targetingRangeLevel++;
-        level++;
+        targetingRange = CalculateRange(); // Upgrade range
+
+        targetingRangeLevel++; // Increase targetRange level
+        level++; // Increase general level
     }
 
     private float CalculateRange()
     {
-        return targetingRangeBase * Mathf.Pow(targetingRangeLevel, 0.4f);
+        return targetingRange + 0.5f;
     }
 
     // Damage
@@ -172,7 +183,11 @@ public class Game6Turret : MonoBehaviour
             return;
         }
 
-        Game6Manager.main.SpendCurrency(CalculateCost(damageUpgradeCost));
+        Game6Manager.main.SpendCurrency(damageUpgradeCost);
+
+        damageUpgradeCost = CalculateCost(damageUpgradeCost); // Update the cost
+        UpdatePrice();
+        Game6UpgradeMenu.main.UpdateCosts(upgradeCosts);
 
         bulletDamage = CalculateDamage();
 
@@ -182,19 +197,19 @@ public class Game6Turret : MonoBehaviour
 
     private float CalculateDamage()
     {
-        return bulletDamage++;
+        return ++bulletDamage;
     }
 
     // Cost Related Methods
 
     private int CalculateCost(int upgradeCost)
     {
-        return Mathf.RoundToInt(upgradeCost * Mathf.Pow(level, 0.8f));
+        return Mathf.RoundToInt(upgradeCost * 1.5f);
     }
 
     private bool CanAfford(int cost)
     {
-        if(CalculateCost(cost) > Game6Manager.main.currency)
+        if(cost > Game6Manager.main.currency)
         {
             return false;
         }
@@ -203,6 +218,13 @@ public class Game6Turret : MonoBehaviour
         {
             return true;
         }
+    }
+
+    private void UpdatePrice()
+    {
+        upgradeCosts[0] = bpsUpgradeCost;
+        upgradeCosts[1] = targetingRangeUpgradeCost; 
+        upgradeCosts[2] = damageUpgradeCost;
     }
 
     // EXTRA EDITOR RELATED METHODS
