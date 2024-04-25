@@ -643,10 +643,10 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 150947639}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.12156863, g: 0.18039216, b: 0.27450982, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -657,8 +657,8 @@ Camera:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 0
-    height: 0
+    width: 1
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -9725,7 +9725,7 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1487039707}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.12001601, g: 0.17973724, b: 0.2735849, a: 0}
@@ -11643,6 +11643,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera5: {fileID: 1825590614}
   camera4: {fileID: 150947642}
+  camera6: {fileID: 1487039710}
 --- !u!4 &1794790338
 Transform:
   m_ObjectHideFlags: 0
@@ -11840,7 +11841,7 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1825590612}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
@@ -13702,7 +13703,6 @@ MonoBehaviour:
   - {fileID: 7612819122020855374, guid: 2e966a44c76134604b94bb2713643cf2, type: 3}
   baseEnemies: 8
   enemiesPerSecond: 0.5
-  timeBetweenWaves: 5
   difficultyScalingFactor: 0.75
 --- !u!114 &2107595609
 MonoBehaviour:
