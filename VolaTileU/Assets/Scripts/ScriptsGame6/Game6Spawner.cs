@@ -11,7 +11,7 @@ public class Game6Spawner : MonoBehaviour
     [Header("Attributes")]
     [SerializeField] private int baseEnemies = 8;
     [SerializeField] private float enemiesPerSecond = 0.5f;
-    [SerializeField] private float timeBetweenWaves = 1f;
+    [SerializeField] public static float timeBetweenWaves = 0.5f / TimeManager.slowMotionMultiplier;
     [SerializeField] private float difficultyScalingFactor = 0.75f;
 
     [Header("Events")]
@@ -22,8 +22,10 @@ public class Game6Spawner : MonoBehaviour
     private int enemiesAlive;
     private int enemiesLeftToSpawn;
     private bool isSpawning = false;
-    private float eps; // Enemies per second
+    public static float eps = 1.5f; // Enemies per second
     private float enemiesPerSecondCap = 15.0f;
+    public static float spawnDelay = 1;
+    public static float spawnTimer;
 
     // METHODS
 
@@ -45,7 +47,7 @@ public class Game6Spawner : MonoBehaviour
     }
 
     // Custom Methods
-
+    //TODO change yield to dynamic method
     private IEnumerator StartWave()
     {
         yield return new WaitForSeconds(timeBetweenWaves);
@@ -81,8 +83,8 @@ public class Game6Spawner : MonoBehaviour
         }
 
         timeSinceLastSpawn += Time.deltaTime;
-
-        if(timeSinceLastSpawn >= (1f / eps) && enemiesLeftToSpawn > 0)
+        
+        if(timeSinceLastSpawn >= spawnTimer && enemiesLeftToSpawn > 0)
         {
             int index = Random.Range(0, enemyPrefabs.Length);
             GameObject prefabToSpawn = enemyPrefabs[index];

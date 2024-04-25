@@ -50,4 +50,27 @@ public class TimeManager : MonoBehaviour
         Game5Shooter.shotDelay = 1.0f;
         Game5EnemyBullet.enemyBulletSpeed = 10.0f;
     }
+
+    public void Focus6()
+    {
+        // Ice Turret
+        Game6TurretIce.attackSpeed = 0.25f;
+        Game6TurretIce.freezeTime = 1.0f;
+
+        // Basic Turret
+        Game6Turret.bps = 1;
+        Game6Turret.rotationSpeed = 500.0f;
+        Game6Turret.fireDelay = 1.0f;
+
+        // Spawner
+        Game6Spawner.timeBetweenWaves = 1.0f;
+        Game6Spawner.spawnTimer = 1.0f;
+
+        // Basic Enemey BUG fix resetting movement on focus change if frozen by ice turret
+        Game6EnemyMovement.moveSpeed = 2.0f;
+        Game6EnemyMovement.baseSpeed = Game6EnemyMovement.moveSpeed;
+        
+        // Bullets
+        Game6Bullet.bulletSpeed = 5.0f;
+    }
 }

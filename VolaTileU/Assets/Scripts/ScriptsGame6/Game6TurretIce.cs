@@ -10,9 +10,9 @@ public class Game6TurretIce : MonoBehaviour
 
     [Header("Attributes")]
     [SerializeField] private float targetingRange = 2.0f;
-    [SerializeField] private float attackSpeed = 0.25f;
+    [SerializeField] public static float attackSpeed = 0.25f * TimeManager.slowMotionMultiplier;
     [SerializeField] private float freezeValue = 0.5f;
-    [SerializeField] private float freezeTime = 1.0f;
+    [SerializeField] public static float freezeTime = 1.0f / TimeManager.slowMotionMultiplier;
 
     private float timeUntilFire;
 

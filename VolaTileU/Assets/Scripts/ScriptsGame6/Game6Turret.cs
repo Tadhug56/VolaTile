@@ -14,8 +14,8 @@ public class Game6Turret : MonoBehaviour
 
     [Header("Attributes")]
     [SerializeField] private float targetingRange = 2.5f;
-    [SerializeField] private float rotationSpeed = 500.0f;
-    [SerializeField] private float bps = 1.0f; // Bullets per second
+    [SerializeField] public static float rotationSpeed = 500.0f * TimeManager.slowMotionMultiplier;
+    [SerializeField] public static float bps = 1.0f * TimeManager.slowMotionMultiplier; // Bullets per second
     [SerializeField] private float bulletDamage = 1.0f;
 
     // Upgrade Costs
@@ -37,6 +37,7 @@ public class Game6Turret : MonoBehaviour
     private float bulletDamageBase;
 
     private float timeUntilFire;
+    public static float fireDelay = 1.0f / TimeManager.slowMotionMultiplier;
 
     private void Start()
     {
@@ -72,7 +73,7 @@ public class Game6Turret : MonoBehaviour
 
         else
         {
-            if(timeUntilFire >= 1.0f / bps)
+            if(timeUntilFire >= fireDelay / bps)
             {
                 FireBullet();
                 timeUntilFire = 0;
@@ -112,6 +113,8 @@ public class Game6Turret : MonoBehaviour
         game6BulletScript.SetTarget(target);
 
         game6BulletScript.bulletDamage = bulletDamage;
+
+        Debug.Log(name + bps);
     }
 
 

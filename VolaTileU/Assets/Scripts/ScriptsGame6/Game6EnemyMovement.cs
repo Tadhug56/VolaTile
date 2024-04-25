@@ -8,12 +8,12 @@ public class Game6EnemyMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     
     [Header("Attributes")]
-    [SerializeField] private float moveSpeed = 8.0f;
+    [SerializeField] public static float moveSpeed = 2.0f * TimeManager.slowMotionMultiplier;
 
     private Transform target;
     private int pathIndex = 0;
 
-    private float baseSpeed;
+    public static float baseSpeed = moveSpeed;
 
     private void Start()
     {

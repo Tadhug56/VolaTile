@@ -8,12 +8,14 @@ public class ViewManager : MonoBehaviour
     // Cameras
     public Camera camera5;
     public Camera camera4;
+    public Camera camera6;
 
     // ViewManager Variables
-    private float newWidth = 0.5f;
+    private float newWidth = 0.33f;
     public static int focus;
     private float changeFocusDelay = 1.0f;
     private float changeFocusTime;
+    private int currentFocus;
 
     // Script References
     private TimeManager timeManager;
@@ -28,6 +30,7 @@ public class ViewManager : MonoBehaviour
         speedManager = GameObject.FindGameObjectWithTag("SpeedManager").GetComponent<DefaultSpeeds>();
 
         focus = 5;
+        currentFocus = focus;
 
         Focus();
     }
@@ -42,21 +45,24 @@ public class ViewManager : MonoBehaviour
 
     public void CameraTransition() // Will take in game parameters
     {
-        camera5.rect = new Rect(.5f, 0f, newWidth, 1f);
-        camera4.rect = new Rect(0f, 0f, newWidth, 1f);
+        camera5.rect = new Rect(0.333f, 0.333f, 0.333f, 0.333f);
+        camera4.rect = new Rect(0f, 0.333f, 0.333f, 0.333f);
+        camera6.rect = new Rect(0.667f, 0.333f, 0.333f, 0.333f);
         camera5.enabled = true;
         camera4.enabled = true;
+        camera6.enabled = true;
     }
 
     public void MoveFocus()
     {
         if(changeFocusTime > changeFocusDelay)
         {
-            if(Input.GetKeyDown("j"))
+            if(Input.GetKeyDown("j")) // Farthest game made so far
             {
-                if(focus != 4)
+                if(focus > 4 )
                 {
-                    focus = 4;
+                    focus--;
+
                     Focus();
                     OnFocusChange.Invoke(focus);
                     changeFocusTime = 0;
@@ -65,9 +71,9 @@ public class ViewManager : MonoBehaviour
 
             if(Input.GetKeyDown("l"))
             {   
-                if(focus != 5)
+                if(focus < 6)
                 {
-                    focus = 5;
+                    focus++;
                     Focus();
                     OnFocusChange.Invoke(focus); 
                     changeFocusTime = 0;
@@ -91,10 +97,16 @@ public class ViewManager : MonoBehaviour
 
                 timeManager.Focus5();
                 speedManager.DefaultGame4();
+                speedManager.DefaultGame6();
                 
             break;
 
-                
+            case 6:
+
+                timeManager.Focus6();
+                speedManager.DefaultGame5();
+
+                break;
         }
     }
 
