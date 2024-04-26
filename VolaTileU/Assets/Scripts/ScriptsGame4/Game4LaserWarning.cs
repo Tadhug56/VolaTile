@@ -4,15 +4,44 @@ using UnityEngine;
 
 public class Game4LaserWarning : MonoBehaviour
 {
+    // Laser Related Variables
+    private float timeAlive; // Time the laser has been alive for
+    private float laserLife = 1.0f; // Time the laser should be alive for
 
-    private float timeAlive;
-    private float laserLife = 1.0f;
-
+    // TimeMultiplyer
     private float timeMultiplyer = 1;
 
     private void Update()
     {
-        DynamicLife();
+        DynamicLife(); // Track time alive with slowdown in mind
+    }
+
+    // Update the value of timeMultiplyer based on if the game is in focus or not
+    private void UpdateFocus(int focus)
+    {
+        // If in focus timescale is normal
+        if(focus == 4)
+        {
+            timeMultiplyer = 1.0f;
+        }
+
+        // Otherwise set it to the slowMotionMultiplier
+        else
+        {
+            timeMultiplyer = TimeManager.slowMotionMultiplier;
+        }
+    }
+
+    // Track life of laser warning taking the slow down into consideration
+    private void DynamicLife()
+    {
+        timeAlive += Time.deltaTime * timeMultiplyer; // Multiply it by the current timescale
+
+        // If time to be alive runs out
+        if (timeAlive >= laserLife)
+        {
+            Destroy(gameObject);
+        }
     }
 
     void OnEnable()
@@ -23,28 +52,5 @@ public class Game4LaserWarning : MonoBehaviour
     void OnDisable()
     {
         ViewManager.OnFocusChangeLaserWarning.RemoveListener(UpdateFocus); // Unsubscribe from the focus change event
-    }
-
-    private void UpdateFocus(int focus)
-    {
-        if(focus == 4)
-        {
-            timeMultiplyer = 1.0f;
-        }
-
-        else
-        {
-            timeMultiplyer = TimeManager.slowMotionMultiplier;
-        }
-    }
-
-   private void DynamicLife()
-    {
-        timeAlive += Time.deltaTime * timeMultiplyer;
-
-        if (timeAlive >= laserLife)
-        {
-            Destroy(gameObject);
-        }
     }
 }

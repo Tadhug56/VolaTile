@@ -62,31 +62,34 @@ public class Game4SpawnManager : MonoBehaviour
         {
             float startTime = Time.time;
             
+            // Spawn delay
             while(Time.time < startTime + spawnDelay)
             {
                 yield return null;
             }
 
-            CalculateSpawnRange();
-            SpawnWarning();
+            CalculateSpawnRange(); // Calculate range around the player
+            SpawnWarning(); // Spawn the warning
 
             startTime = Time.time;
 
+            // Dodge delay
             while(Time.time < startTime + dodgeDelay)
             {
                 yield return null;
             }
             
-            SpawnLasers();
+            SpawnLasers(); // Spawn the actual laser
         }
     }
 
-
+    // Spawns lasers
     private void SpawnLasers()
     {       
         Instantiate(laserPrefab, spawnPositions[circlePosition], rotation);
     }
 
+    // Spawns warning shot
     private void SpawnWarning()
     {
         Instantiate(laserWarningPrefab, spawnPositions[circlePosition], rotation);
@@ -96,6 +99,7 @@ public class Game4SpawnManager : MonoBehaviour
    // Creates a list of spawn positions around in a circle radius around the player that enemies can spawn from
     private void CalculateSpawnRange()
     {
+        // If player is alive
         if(player == null)
         {
             return;

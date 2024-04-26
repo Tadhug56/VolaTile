@@ -32,7 +32,6 @@ public class Game5PlayerAttributes : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Collide");
         if(Game6Manager.main.currency >= 50)
         {
             Game6Manager.main.currency -= 50;
