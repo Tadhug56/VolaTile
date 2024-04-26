@@ -67,6 +67,7 @@ public class SpawnManager : MonoBehaviour
             else
             {
                 waveTimer = 0;
+                GenerateWave();
             }
         }
 

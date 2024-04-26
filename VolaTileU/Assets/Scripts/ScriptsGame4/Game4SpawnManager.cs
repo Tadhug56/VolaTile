@@ -6,6 +6,7 @@ public class Game4SpawnManager : MonoBehaviour
 {
     // Laser Variables
     public GameObject laserPrefab;
+    public GameObject laserWarningPrefab;
     public static Coroutine spawning;
     
     
@@ -57,7 +58,7 @@ public class Game4SpawnManager : MonoBehaviour
     private IEnumerator SpawnRoutine()
     {
         // Continue spawning // TODO make conditional based on if the game is in view or not.
-        while(true)
+        while(player != null)
         {
             float startTime = Time.time;
             
@@ -67,6 +68,7 @@ public class Game4SpawnManager : MonoBehaviour
             }
 
             CalculateSpawnRange();
+            SpawnWarning();
 
             startTime = Time.time;
 
@@ -85,10 +87,20 @@ public class Game4SpawnManager : MonoBehaviour
         Instantiate(laserPrefab, spawnPositions[circlePosition], rotation);
     }
 
+    private void SpawnWarning()
+    {
+        Instantiate(laserWarningPrefab, spawnPositions[circlePosition], rotation);
+    }
+
 
    // Creates a list of spawn positions around in a circle radius around the player that enemies can spawn from
     private void CalculateSpawnRange()
     {
+        if(player == null)
+        {
+            return;
+        }
+
         float angleStep = 360.0f / numberOfSpawnLocations; // Number of possible locations in the circle to spawn from
         
         spawnPositions = new List<Vector3>(); // List to store calculated spawn positions

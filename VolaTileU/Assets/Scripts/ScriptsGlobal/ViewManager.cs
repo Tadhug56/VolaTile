@@ -9,9 +9,10 @@ public class ViewManager : MonoBehaviour
     public Camera camera5;
     public Camera camera4;
     public Camera camera6;
+    public Camera blank1;
+    public Camera blank2;
 
     // ViewManager Variables
-    private float newWidth = 0.33f;
     public static int focus;
     private float changeFocusDelay = 1.0f;
     private float changeFocusTime;
@@ -23,6 +24,7 @@ public class ViewManager : MonoBehaviour
 
     // Events
     public static UnityEvent<int> OnFocusChange = new UnityEvent<int>();
+    public static UnityEvent<int> OnFocusChangeLaserWarning = new UnityEvent<int>();
 
     void Start()
     {
@@ -51,6 +53,10 @@ public class ViewManager : MonoBehaviour
         camera5.enabled = true;
         camera4.enabled = true;
         camera6.enabled = true;
+
+        // Temp Blanks
+        blank1.enabled = true;
+        blank2.enabled = true;
     }
 
     public void MoveFocus()
@@ -65,6 +71,7 @@ public class ViewManager : MonoBehaviour
 
                     Focus();
                     OnFocusChange.Invoke(focus);
+                    OnFocusChangeLaserWarning.Invoke(focus);
                     changeFocusTime = 0;
                 }
             }
@@ -75,7 +82,8 @@ public class ViewManager : MonoBehaviour
                 {
                     focus++;
                     Focus();
-                    OnFocusChange.Invoke(focus); 
+                    OnFocusChange.Invoke(focus);
+                    OnFocusChangeLaserWarning.Invoke(focus);
                     changeFocusTime = 0;
                 }
             }

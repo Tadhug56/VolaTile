@@ -31,6 +31,7 @@ public class Game6EnemyMovement : MonoBehaviour
             {
                 Game6Spawner.onEnemyDestroy.Invoke();
                 Destroy(gameObject);
+                Game6Manager.main.currency -= 100;
                 return;
             }
 

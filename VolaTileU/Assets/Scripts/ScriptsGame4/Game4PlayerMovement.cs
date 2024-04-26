@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class Game4PlayerMovement : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class Game4PlayerMovement : MonoBehaviour
             private float smoothMovementInputTime = 0.1f;
             private Vector2 moveInput;
             private Vector2 smoothMovementInput;
-            private Vector2 smoothMovementInputVelocity; 
+            private Vector2 smoothMovementInputVelocity;
 
             // Rotation Variables
             public static float rotationSpeed = 4000.0f * TimeManager.slowMotionMultiplier;
@@ -23,17 +24,27 @@ public class Game4PlayerMovement : MonoBehaviour
 
         private Rigidbody2D playerRb;
 
+    // Health Variables
+
+        public int playerHealth;
+
     
     // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody2D>();
+        playerHealth = 3;
     }
 
 
     // Updates based on the physics frames
     void FixedUpdate()
     {
+        if(gameObject == null)
+        {
+            return;
+        }
+
         Movement();
         RotationDirection();
     }
@@ -64,6 +75,11 @@ public class Game4PlayerMovement : MonoBehaviour
     // Check for movement inputs
     private void OnMove(InputValue inputValue)
     {
+        if(gameObject == null)
+        {
+            return;
+        }
         moveInput = inputValue.Get<Vector2>();
     }
+
 }

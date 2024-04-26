@@ -29,4 +29,18 @@ public class Game5PlayerAttributes : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("Collide");
+        if(Game6Manager.main.currency >= 50)
+        {
+            Game6Manager.main.currency -= 50;
+        }
+
+        else
+        {
+            Game6Manager.main.currency = 0;
+        }
+    }
 }

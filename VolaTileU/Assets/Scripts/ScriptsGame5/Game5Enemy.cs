@@ -56,6 +56,7 @@ public class Game5Enemy : MonoBehaviour
         // If enemy has no health left destroy the enemy
         if(health <= 0)
         {
+            Game6Manager.main.currency += 50;
             Destroy(gameObject);
         }
     }

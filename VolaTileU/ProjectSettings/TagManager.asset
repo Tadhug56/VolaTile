@@ -18,6 +18,7 @@ TagManager:
   - SpeedManager
   - Game4SpawnManager
   - Game6UpgradeMenu
+  - BlankCamera
   layers:
   - Default
   - TransparentFX
