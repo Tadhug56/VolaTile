@@ -14,7 +14,7 @@ with danger creeping in from all sides
 Currently 3 games are functional :
 - A reverse bullet hell where the player has enemies approaching from all sides as he fends them off upgrading his abilites and stats along the way
 
-- A laser dodging game similar to [Ikaruga] (https://en.wikipedia.org/wiki/Ikaruga) where your aim is to survive as long as possible amist a huge volume projectiles aimed your way
+- A laser dodging game similar to [Ikaruga](https://en.wikipedia.org/wiki/Ikaruga) where your aim is to survive as long as possible amist a huge volume projectiles aimed your way
 
 - A tower defense where ramping waves of enemies slowly attempt to overwhelm you as you build towers with currency you've collected from other games. Watch them slowly creep to the end as you try to grab any currency you can in other games to build a strong enough defence
 
@@ -52,6 +52,6 @@ A lot of static variables are used for the slow motion mechanic which effect all
 
 
 ## TRAILER
-[Youtube Link] (https://youtu.be/od-m_1xl40s)
+[Youtube Link](https://youtu.be/od-m_1xl40s)
 
 Developed by Tadhg Mulvey / C22410612
